@@ -1,36 +1,56 @@
-# Dataset Analyzer MCP Server
+# Dataset Analyzer MCP
 
-An MCP server that provides intelligent dataset analysis capabilities including:
-- Dataset information (shape, columns, null values, statistics)
-- Similar column detection across datasets
-- Column pattern recognition
-- Dataset listing
+This project is a Metacontroller-Plane (MCP) server designed for intelligent dataset analysis. It provides a suite of tools to help you understand, clean, and process your datasets, with a special focus on biomedical data.
 
 ## Features
 
-1. **Dataset Information**: Get comprehensive details about any CSV or Excel file including shape, columns, data types, null value counts, and statistical summaries.
+*   **Dataset Exploration:** Get comprehensive information about your datasets, including column names, data types, missing values, and summary statistics.
+*   **Data Visualization:** Generate histograms to visualize the distribution of numeric columns.
+*   **Data Cleaning:** Handle missing values and remove duplicate rows.
+*   **Feature Engineering:** Create new features from existing ones, such as interaction terms.
+*   **Biomedical Tools:** Map gene identifiers between different databases.
+*   **Code Execution:** Execute arbitrary Python code on your datasets.
 
-2. **Similar Column Detection**: Find similar column names across all datasets using fuzzy string matching, helpful when columns represent the same data but have different names.
+## Getting Started
 
-3. **Column Pattern Recognition**: Identify common data patterns (like cell_line, drug, dose, etc.) even when they have different column names.
+1.  **Installation:**
 
-4. **Dataset Listing**: List all available CSV datasets in your workspace.
+    ```bash
+    uv run pip install -r requirements.txt
+    uv run mcp install main.py
+    ```
 
-## Installation
+2.  **Usage:**
 
-```bash
-uv sync
-```
+    Once the MCP server is installed, you can interact with it through the Claude desktop app or any other MCP-compatible client.
 
-## Usage
+## Tools
 
-```bash
-uv run python main.py
-```
+### Data Loader
 
-The server communicates over stdio and provides the following tools:
+*   `list_datasets()`: List all available datasets.
+*   `get_data_sample(file_path: str, n_rows: int = 5)`: Get a small sample of a dataset.
 
-- `get_dataset_info`: Get comprehensive information about a dataset
-- `find_similar_columns`: Find similar column names across datasets
-- `get_column_patterns`: Identify column patterns and potential matches
-- `list_datasets`: List all available datasets in the workspace
+### Data Analyzer
+
+*   `get_dataset_info(file_path: str)`: Get comprehensive information about a dataset.
+*   `find_similar_columns(target_column: str, threshold: int = 80)`: Find similar column names across all datasets.
+*   `get_column_patterns()`: Identify column patterns and potential matches from headers.
+
+### Data Visualizer
+
+*   `plot_histogram(file_path: str, column_name: str)`: Generate a histogram for a numeric column.
+
+### Data Preprocessor
+
+*   `execute_code(file_path: str, code: str)`: Execute arbitrary Python code on a dataset.
+*   `handle_missing_values(file_path: str, strategy: str = 'mean', value: Any = None)`: Handle missing values in a dataset.
+*   `remove_duplicates(file_path: str)`: Remove duplicate rows from a dataset.
+
+### Feature Engineer
+
+*   `create_interaction_terms(file_path: str, col1: str, col2: str)`: Create an interaction term between two numeric columns.
+
+### Biomedical Tools
+
+*   `map_gene_ids(file_path: str, id_column: str, from_db: str, to_db: str)`: Map gene identifiers from one database to another.
