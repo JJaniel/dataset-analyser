@@ -1,5 +1,5 @@
 import json
-from typing import Any
+from typing import Any, Dict
 import pandas as pd
 from mcp.server import FastMCP
 from .utils import workspace_path
@@ -31,6 +31,8 @@ def add_tools(mcp: FastMCP):
                 return json.loads(result.to_json(orient='records', default_handler=str))
             else:
                 return result
+        except Exception as e:
+            return {"error": str(e)}
 
     @mcp.tool()
     def handle_missing_values(file_path: str, strategy: str = 'mean', value: Any = None) -> Dict[str, Any]:
@@ -85,9 +87,6 @@ def add_tools(mcp: FastMCP):
             df.to_csv(new_file_path, index=False)
 
             return {"message": f"Duplicates removed successfully. The processed file is saved at {new_file_path}"}
-
-        except Exception as e:
-            return {"error": str(e)}
 
         except Exception as e:
             return {"error": str(e)}
