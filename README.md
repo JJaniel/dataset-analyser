@@ -1,6 +1,6 @@
 # Dataset Analyzer MCP
 
-This project is a Model Context Protocol (MCP) (MCP) server designed for intelligent dataset analysis. It provides a suite of tools to help you understand, clean, and process your datasets, with a special focus on biomedical data.
+This project is a Model Context Protocol (MCP) server designed for intelligent dataset analysis. It provides a suite of tools to help you understand, clean, and process your datasets, with a special focus on biomedical data.
 
 ## Features
 
