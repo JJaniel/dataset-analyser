@@ -1,6 +1,6 @@
 # Dataset Analyzer MCP
 
-This project is a Metacontroller-Plane (MCP) server designed for intelligent dataset analysis. It provides a suite of tools to help you understand, clean, and process your datasets, with a special focus on biomedical data.
+This project is a Model Context Protocol (MCP) (MCP) server designed for intelligent dataset analysis. It provides a suite of tools to help you understand, clean, and process your datasets, with a special focus on biomedical data.
 
 ## Features
 
@@ -54,3 +54,7 @@ This project is a Metacontroller-Plane (MCP) server designed for intelligent dat
 ### Biomedical Tools
 
 *   `map_gene_ids(file_path: str, id_column: str, from_db: str, to_db: str)`: Map gene identifiers from one database to another.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.

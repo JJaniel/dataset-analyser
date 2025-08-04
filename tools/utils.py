@@ -1,8 +1,11 @@
+import os
 from pathlib import Path
 from typing import Dict, List, Optional
 import pandas as pd
 
-workspace_path = Path("datasets")
+# Use environment variable for datasets directory, with a default
+datasets_dir = os.environ.get("DATASETS_DIR", "datasets")
+workspace_path = Path(datasets_dir)
 # Caching just the headers to save memory
 headers_cache: Dict[str, List[str]] = {}
 
